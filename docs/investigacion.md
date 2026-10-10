@@ -1,6 +1,6 @@
 # Investigación: app de gimnasio con corrección de técnica por cámara
 
-_Gualda Training · octubre 2026_
+_GymClaud (app) · GymRun (gimnasio) · octubre 2026_
 
 Este documento resume la investigación que fundamenta las decisiones técnicas del proyecto. Está pensado para que cualquier persona (o Claude Code) entienda **por qué** la app está construida así antes de cambiarla.
 
@@ -15,7 +15,7 @@ Este documento resume la investigación que fundamenta las decisiones técnicas 
    - Biblioteca curada (14 sets de reglas que cubren 31 ejercicios del seed, ampliable).
    - Gemini genera reglas para ejercicios desconocidos → se validan, se guardan y el entrenador las revisa.
    - Modo automático: si no hay reglas ni IA, la app aprende el movimiento en 2 repeticiones y al menos cuenta y detecta recorridos incompletos.
-5. **Planes gratuitos**: Supabase Free alcanza para empezar; **Vercel Hobby no permite uso comercial** (un gimnasio cobrando cuotas es comercial → Vercel Pro, USD 20/mes, o alojar en otro lado). El plan gratuito de Gemini usa los datos para mejorar los productos de Google: no mandar fotos de alumnos sin consentimiento.
+5. **Planes gratuitos**: Supabase Free y Vercel Hobby alcanzan de sobra para el volumen de un gimnasio. Técnicamente todo funciona en gratis; la única salvedad es que las condiciones de Vercel Hobby dicen "uso personal no comercial" (ver sección 6). El plan gratuito de Gemini usa los datos para mejorar los productos de Google: no mandar fotos de alumnos sin consentimiento.
 6. **Notificaciones push**: Firebase Cloud Messaging funciona en Android y en iPhone, pero en iPhone **solo si el alumno instala la app en la pantalla de inicio** (PWA). La app lo explica en Perfil.
 
 ---
@@ -108,10 +108,12 @@ Detalles técnicos relevantes de la documentación oficial:
 | Servicio | Plan gratuito | Ojo con |
 |---|---|---|
 | **Supabase** | 500 MB de base, 1 GB de archivos, 50.000 usuarios activos/mes, 5 GB de transferencia, 2 proyectos | **Pausa el proyecto tras 1 semana sin actividad** (para producción conviene Pro, USD 25/mes). |
-| **Vercel** | Hobby: 1M invocaciones, 100 GB de transferencia, funciones de hasta 300 s | **Hobby es solo para uso personal y no comercial.** Para el gimnasio corresponde Pro (USD 20 por usuario/mes) o alojar en otro proveedor. |
+| **Vercel** | Hobby: 1M invocaciones, 100 GB de transferencia, funciones de hasta 300 s | Las condiciones dicen uso personal no comercial. Funciona igual; ver nota abajo. |
 | **Firebase Cloud Messaging** | Gratis | — |
 | **Gemini API** | Gratis con límites por proyecto | Uso de datos para mejorar productos (ver sección 4). |
 | **MediaPipe** | Gratis, corre en el dispositivo | El modelo (~5 MB) y el WASM se bajan de CDN de Google/jsDelivr; se pueden alojar en `/public` para no depender de terceros. |
+
+**Sobre Vercel gratis (Hobby)**: la app anda perfecto en Hobby y el consumo de un gimnasio queda muy lejos de los límites (la cámara y la planilla corren en el teléfono, no en Vercel). Lo único es que sus condiciones de uso reservan Hobby para proyectos personales no comerciales. Para arrancar, probar con alumnos o como proyecto de estudio no hay problema. Si más adelante la app pasa a ser parte del negocio (por ejemplo, cobrar por usarla), lo prolijo es pasar a Pro o mudarla a un hosting gratuito que sí permita uso comercial; el código no cambia.
 
 El volumen de datos de un gimnasio (rutinas, series, resúmenes de técnica sin video) es chico: miles de alumnos entran cómodos en el plan gratuito de Supabase.
 
@@ -129,7 +131,7 @@ El volumen de datos de un gimnasio (rutinas, series, resúmenes de técnica sin 
 
 ## 8. La planilla del gimnasio
 
-Se relevó la "Planilla Gualda" original (14 hojas). La app replica su modelo de datos (12 semanas × 6 días × 8 ejercicios × 5 series, las 20 categorías del contador de series, el resumen diario y el feedback semanal) y **exporta sobre el archivo original** para conservar formato, logo, menús y fórmulas.
+Se relevó la planilla original del gimnasio (14 hojas). La app replica su modelo de datos (12 semanas × 6 días × 8 ejercicios × 5 series, las 20 categorías del contador de series, el resumen diario y el feedback semanal) y **exporta sobre el archivo original** para conservar formato, logo, menús y fórmulas.
 
 En el relevamiento aparecieron **dos errores en la planilla original**, que la exportación corrige:
 1. "Contador de series" D8 (Tracción horizontal, semana 1) tenía un **9 escrito a mano** en lugar de la fórmula.
@@ -148,6 +150,7 @@ Además, "Semanas transcurridas" daba `#VALUE!` si la fecha de inicio era futura
 | Celulares viejos lentos | Modelo lite, procesamiento solo de cuadros nuevos; roadmap: Web Worker y bajar resolución |
 | Cuota de Gemini agotada | Caché de reglas en la base, límites diarios, modelo de respaldo, modo automático |
 | iPhone sin notificaciones | Instrucciones de instalación en Perfil; las novedades igual se ven en la app |
+| Vercel Hobby pide uso no comercial | Arrancar en Hobby; si la app se vuelve parte del negocio, pasar a Pro o mudar el hosting (sin cambiar código) |
 | Cambio de nombres de modelos | Variables de entorno, documentación de cómo actualizar |
 
 ---

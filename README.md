@@ -1,6 +1,6 @@
-# Gualda Training · app del gimnasio
+# GymClaud · app del gimnasio GymRun
 
-PWA para que el entrenador cargue rutinas y novedades, y los alumnos registren sus entrenamientos y **corrijan la técnica con la cámara del celular en tiempo real**.
+PWA para que el entrenador del gimnasio **GymRun** cargue rutinas y novedades, y los alumnos registren sus entrenamientos y **corrijan la técnica con la cámara del celular en tiempo real**.
 
 - 📋 Rutinas por semana y día (mismo modelo que la planilla del gimnasio) y descarga en la **planilla Excel original**.
 - 📷 Corrección de técnica en vivo con MediaPipe (corre en el teléfono, no se graba video), voz en castellano y puntaje por repetición.
@@ -15,8 +15,11 @@ PWA para que el entrenador cargue rutinas y novedades, y los alumnos registren s
 ```bash
 npm install
 cp .env.example .env.local   # completar (ver docs/setup.md)
+npm run check-env            # te dice qué falta configurar
 npm run dev
 ```
+
+👉 **Para conectar Supabase, Firebase, Gemini y Vercel seguí [docs/setup.md](docs/setup.md).**
 
 ## Documentación
 
@@ -33,4 +36,5 @@ npm run dev
 | `npm run dev` / `npm run dev:https` | Desarrollo (HTTPS para probar la cámara desde el celular) |
 | `npm test` | Tests del motor de pose y de la exportación Excel |
 | `npm run lint` · `npm run typecheck` | Calidad de código |
+| `npm run check-env` | Revisa que estén todas las variables de entorno |
 | `npm run build` | Build de producción |

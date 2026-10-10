@@ -1,8 +1,9 @@
 import JSZip from "jszip";
+import { GYM_NAME } from "@/lib/brand";
 import { setCells, type CellValue } from "./xlsxCells";
 
 /*
-  Exporta un programa a la "Planilla Gualda" original (public/templates/planilla.xlsx).
+  Exporta un programa a la planilla del gimnasio GymRun (public/templates/planilla.xlsx).
 
   Mapa de la planilla (relevado del archivo original):
   - Hojas "Semana 1".."Semana 12". OJO: "Semana 1" tiene una fila extra (Objetivo, fila 4),
@@ -267,5 +268,5 @@ export function planillaFileName(studentName: string, title?: string | null): st
       .replace(/[̀-ͯ]/g, "")
       .replace(/[^a-zA-Z0-9]+/g, "-")
       .replace(/^-|-$/g, "");
-  return `Planilla-${slug(studentName) || "alumno"}${title ? `-${slug(title)}` : ""}.xlsx`;
+  return `${slug(GYM_NAME)}-Planilla-${slug(studentName) || "alumno"}${title ? `-${slug(title)}` : ""}.xlsx`;
 }

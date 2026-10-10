@@ -1,13 +1,13 @@
 import type { MetadataRoute } from "next";
-import { GYM_NAME, GYM_SHORT_NAME } from "@/lib/brand";
+import { APP_NAME, APP_SHORT_NAME } from "@/lib/brand";
 
 // Manifest PWA. En iOS las notificaciones push SOLO funcionan si el alumno
 // instala la app en la pantalla de inicio (Compartir → Agregar a inicio),
 // por eso display tiene que ser "standalone".
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: GYM_NAME,
-    short_name: GYM_SHORT_NAME,
+    name: APP_NAME,
+    short_name: APP_SHORT_NAME,
     description: "Rutinas, seguimiento y corrección de técnica con la cámara.",
     start_url: "/inicio",
     scope: "/",

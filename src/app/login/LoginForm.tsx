@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { Button, ErrorNote, Field, Input } from "@/components/ui";
-import { GYM_NAME } from "@/lib/brand";
+import { APP_NAME } from "@/lib/brand";
 
 export function LoginForm() {
   const router = useRouter();
@@ -42,7 +42,7 @@ export function LoginForm() {
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-sm flex-col justify-center px-6 py-10">
-      <Image src="/brand-logo.png" alt={GYM_NAME} width={320} height={160} priority className="mx-auto mb-8 w-56 rounded-2xl" />
+      <Image src="/brand-logo.png" alt={APP_NAME} width={320} height={160} priority className="mx-auto mb-8 w-56 rounded-2xl" />
       <h1 className="font-display text-3xl font-bold uppercase">Ingresá</h1>
       <p className="mb-6 text-sm text-muted">Tu rutina, tu progreso y tu técnica en un solo lugar.</p>
 

@@ -1,4 +1,4 @@
-# Puesta en marcha (de cero a producción)
+# Puesta en marcha de GymClaud (de cero a producción)
 
 Tiempo estimado: 45-60 minutos la primera vez.
 
@@ -62,6 +62,7 @@ La app funciona sin Firebase: simplemente no manda notificaciones.
 ## 4. Probar en tu compu
 
 ```bash
+npm run check-env     # revisa variables y prueba Supabase, Gemini y Firebase
 npm run dev           # http://localhost:3000
 npm test              # tests del motor y de la planilla
 ```
@@ -75,9 +76,9 @@ npm test              # tests del motor y de la planilla
 1. https://vercel.com/new → importá `Facuund0/gym`. Framework: Next.js (se detecta solo).
 2. **Environment Variables**: cargá todas las de `.env.local`, cambiando `NEXT_PUBLIC_SITE_URL` por `https://TU-APP.vercel.app`.
 3. **Deploy**. Después volvé a Supabase y poné esa URL como Site URL (paso 1.4).
-4. Opcional: en Settings → Functions elegí la región `gru1` (São Paulo) para estar cerca de Supabase.
+4. Opcional: en Settings → Functions elegí la región `gru1` (São Paulo) para estar cerca de Supabase (disponible también en Hobby).
 
-> **Ojo**: el plan Hobby de Vercel es solo para uso personal no comercial. Para la app del gimnasio con alumnos corresponde el plan Pro.
+> El plan **Hobby (gratis)** alcanza: no hace falta tarjeta. Sus condiciones piden uso personal no comercial; para arrancar y probar con alumnos está bien. Ver `docs/investigacion.md` sección 6.
 
 ## 6. Instalar la app en los teléfonos
 

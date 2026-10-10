@@ -1,6 +1,6 @@
 -- =====================================================================
--- Gualda Training · esquema inicial
--- Modelo calcado de la "Planilla Gualda": programas de hasta 12 semanas,
+-- GymClaud · esquema inicial
+-- Modelo calcado de la planilla del gimnasio (GymRun): programas de hasta 12 semanas,
 -- hasta 6 días por semana, hasta 8 ejercicios por día y hasta 5 series.
 -- Correr en Supabase: SQL Editor → pegar → Run  (o `npx supabase db push`).
 -- =====================================================================

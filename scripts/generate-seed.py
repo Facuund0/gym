@@ -100,7 +100,7 @@ def main() -> None:
     ]
     sql = "\n".join(
         [
-            "-- Biblioteca inicial de ejercicios de Gualda Training (generado por scripts/generate-seed.py).",
+            "-- Biblioteca inicial de ejercicios de GymRun (generado por scripts/generate-seed.py).",
             "-- Correr DESPUÉS de la migración (SQL Editor → pegar → Run). Es idempotente.",
             "-- rule_key apunta a las reglas curadas de src/lib/pose/library; NULL = sin detección todavía",
             "-- (la app las genera con Gemini la primera vez que alguien usa la cámara con ese ejercicio).",

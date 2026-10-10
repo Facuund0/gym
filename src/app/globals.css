@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 /*
-  Identidad visual tomada de la planilla de Gualda Training:
-  rosa del logo (#DF5A86) y bordó de los encabezados (#9C1944).
+  Identidad visual de GymClaud (app) y GymRun (gimnasio):
+  naranja (#FF6A2B) y naranja oscuro (#C2410C).
   La app es oscura por defecto (se usa en el gimnasio, con poca luz y el
   teléfono apoyado en el piso), con un modo claro opcional.
 */
@@ -13,8 +13,8 @@
   --border: #33292f;
   --text: #f6eef2;
   --muted: #a8979f;
-  --brand: #df5a86;
-  --brand-strong: #9c1944;
+  --brand: #ff6a2b;
+  --brand-strong: #c2410c;
   --brand-contrast: #ffffff;
   --ok: #3ccf8e;
   --warn: #f2b13d;

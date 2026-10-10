@@ -20,7 +20,7 @@ Estado al 10/10/2026. Cada ítem tiene tamaño estimado (S < 2 h, M ≈ medio d�
 3. **Mover MediaPipe a un Web Worker** (M) para que la UI no se trabe en celulares de gama baja (OffscreenCanvas + `postMessage` de landmarks). Hecho = 25+ fps con modelo lite en un Android de gama media.
 4. **Alojar el modelo y el WASM localmente** (S): script `scripts/fetch-mediapipe.mjs` que copie `node_modules/@mediapipe/tasks-vision/wasm` (solo los archivos SIMD) y baje `pose_landmarker_lite.task` a `public/`, y setear `NEXT_PUBLIC_POSE_MODEL_URL`.
 5. **Términos y política de privacidad** (S): página `/legal` y aceptación al primer ingreso (Ley 25.326). Hecho = el alumno no puede usar la cámara sin aceptar.
-6. **Recordatorios automáticos** (M): cron de Vercel (`vercel.json` → `/api/cron/recordatorios`) que avise a quien tiene entrenamiento hoy y no lo registró, y el domingo pida el feedback semanal. Proteger con `CRON_SECRET`.
+6. **Recordatorios automáticos** (M): cron de Vercel (en el plan Hobby, una corrida diaria alcanza) (`vercel.json` → `/api/cron/recordatorios`) que avise a quien tiene entrenamiento hoy y no lo registró, y el domingo pida el feedback semanal. Proteger con `CRON_SECRET`.
 
 ## 💡 Ideas para sumar (prioridad media)
 
@@ -30,7 +30,7 @@ Estado al 10/10/2026. Cada ítem tiene tamaño estimado (S < 2 h, M ≈ medio d�
 - **Videos por ejercicio** (S): mostrar `video_url` y las consignas antes de empezar la serie y en la pantalla de técnica.
 - **Chat o comentarios coach ↔ alumno por ejercicio** (M) con Supabase Realtime.
 - **Plantillas de programas** (S): guardar programas como plantilla (sin alumno) y asignarlos a varios.
-- **Importar desde la planilla** (M): leer un .xlsx con el formato Gualda y crear el programa (inverso de la exportación).
+- **Importar desde la planilla** (M): leer un .xlsx con el formato de la planilla GymRun y crear el programa (inverso de la exportación).
 - **Ranking/desafíos mensuales** (M): tonelaje del mes, asistencia; opt-in para no exponer a nadie.
 - **Pagos y vencimiento de cuota** (L): estado de cuota por alumno, aviso de vencimiento; integración con Mercado Pago más adelante.
 - **Reservas de turnos/clases** (L) con cupos.

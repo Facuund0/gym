@@ -1,8 +1,8 @@
-# Gualda Training — app del gimnasio
+# GymClaud — app del gimnasio GymRun
 
 @AGENTS.md
 
-PWA para el gimnasio Gualda Training (Sunchales, Santa Fe, Argentina). El entrenador carga rutinas y novedades; los alumnos ven su rutina, registran series y usan la **cámara para corregir la técnica en vivo**. Se puede descargar cada programa en la planilla Excel original del gimnasio.
+PWA **GymClaud** para el gimnasio **GymRun** (Sunchales, Santa Fe, Argentina). La app se llama GymClaud; el gimnasio (y las planillas Excel) GymRun. Ambos nombres salen de `src/lib/brand.ts`. El entrenador carga rutinas y novedades; los alumnos ven su rutina, registran series y usan la **cámara para corregir la técnica en vivo**. Se puede descargar cada programa en la planilla Excel original del gimnasio.
 
 Dueño del proyecto: Facundo (estudiante de ICES, habla español rioplatense). **Respondé y escribí la UI en español rioplatense (vos)**. Comentarios de código en español.
 
@@ -14,7 +14,7 @@ Dueño del proyecto: Facundo (estudiante de ICES, habla español rioplatense). *
 - **Gemini** (`@google/genai`) solo del lado servidor y solo fuera del tiempo real.
 - **Firebase Cloud Messaging** para push (cliente `firebase`, servidor `firebase-admin`).
 - **Tailwind CSS v4** (tokens en `src/app/globals.css`), **zod 4**, **jszip**, **vitest**.
-- Deploy en **Vercel**.
+- Deploy en **Vercel (plan Hobby gratuito)**: no usar features pagas; los cron jobs en Hobby son de baja frecuencia.
 
 ## Comandos
 
@@ -79,7 +79,7 @@ docs/                                investigación, setup, motor, roadmap
 - Respetar los límites diarios de `src/lib/ai-usage.ts`.
 
 **UI**
-- Mobile first (se usa con el teléfono en el gimnasio), tema oscuro por defecto, colores de marca rosa `#DF5A86` y bordó `#9C1944`.
+- Mobile first (se usa con el teléfono en el gimnasio), tema oscuro por defecto, colores de marca naranja `#FF6A2B` y naranja oscuro `#C2410C`. Logos: `python3 scripts/generate-brand.py` (app) y `scripts/rebrand-template.py` (planilla).
 - Componentes base en `src/components/ui.tsx`; no agregar librerías de UI sin necesidad.
 - Lint del React Compiler activo: nada de `Date.now()` en render, nada de leer refs en render, nada de `setState` sincrónico en efectos (cargar datos con `.then(setX)`).
 

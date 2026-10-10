@@ -7,7 +7,7 @@
 */
 
 const OFFLINE_URL = "/offline";
-const CACHE = "gualda-v1";
+const CACHE = "gymclaud-v1";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -39,11 +39,11 @@ self.addEventListener("push", (event) => {
   try {
     payload = event.data ? event.data.json() : {};
   } catch {
-    payload = { data: { title: "Gualda Training", body: event.data ? event.data.text() : "" } };
+    payload = { data: { title: "GymClaud", body: event.data ? event.data.text() : "" } };
   }
   const data = payload.data || {};
   const notification = payload.notification || {};
-  const title = data.title || notification.title || "Gualda Training";
+  const title = data.title || notification.title || "GymClaud";
   const options = {
     body: data.body || notification.body || "",
     icon: "/icon-192.png",

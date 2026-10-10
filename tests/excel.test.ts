@@ -32,7 +32,7 @@ describe("escritura de celdas", () => {
   });
 });
 
-describe("planilla Gualda", () => {
+describe("planilla GymRun", () => {
   it("ubica bien filas de la Semana 1 y de las demás", () => {
     expect(exerciseRow(1, 1, 1)).toBe(8);
     expect(exerciseRow(1, 6, 8)).toBe(75);
@@ -44,7 +44,7 @@ describe("planilla Gualda", () => {
   it("completa la plantilla real sin romperla", async () => {
     const template = await readFile(TEMPLATE);
     const { bytes, warnings } = await fillPlanilla(template, {
-      coachName: "Coach Gualda",
+      coachName: "Coach GymRun",
       studentName: "Juan Pérez",
       goal: "Ganar fuerza",
       startDate: "2026-10-12",

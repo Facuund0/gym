@@ -1,5 +1,5 @@
 {
-  "name": "gualda-gym",
+  "name": "gymclaud",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "db:types": "npx supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > src/lib/supabase/database.types.ts",
-    "dev:https": "next dev --experimental-https"
+    "dev:https": "next dev --experimental-https",
+    "check-env": "node scripts/check-env.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.28.0",

@@ -7,7 +7,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { useProfile } from "@/components/auth/ProfileProvider";
 import { Loading, cn } from "@/components/ui";
 import { onForegroundPush } from "@/lib/firebase/client";
-import { GYM_NAME } from "@/lib/brand";
+import { APP_NAME } from "@/lib/brand";
 
 type NavItem = { href: string; label: string; icon: ReactNode };
 
@@ -92,7 +92,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <div className="mx-auto flex h-14 max-w-3xl items-center justify-between px-4">
             <Link href="/inicio" className="flex items-center gap-2">
               <Image src="/brand-icon.png" alt="" width={28} height={28} className="rounded-md" />
-              <span className="font-display text-lg font-bold uppercase tracking-wide">{GYM_NAME}</span>
+              <span className="font-display text-lg font-bold uppercase tracking-wide">{APP_NAME}</span>
             </Link>
             {profile && <span className="max-w-[40%] truncate text-sm text-muted">{profile.full_name}</span>}
           </div>
