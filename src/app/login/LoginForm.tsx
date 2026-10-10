@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { Button, ErrorNote, Field, Input } from "@/components/ui";
 import { APP_NAME } from "@/lib/brand";
@@ -17,6 +17,12 @@ export function LoginForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(params.get("error"));
   const [sent, setSent] = useState(false);
+
+  // Si Supabase mandó a alguien acá con la sesión en el #hash (invitación con la
+  // plantilla por defecto), lo pasamos a la página que la toma.
+  useEffect(() => {
+    if (window.location.hash.includes("access_token=")) router.replace(`/auth/bienvenida${window.location.hash}`);
+  }, [router]);
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();

@@ -24,15 +24,7 @@ cp .env.example .env.local
 4. **Authentication → URL Configuration**:
    - Site URL: `http://localhost:3000` (después cambiala por la de Vercel).
    - Redirect URLs: `http://localhost:3000/**` y `https://TU-APP.vercel.app/**`.
-5. **Authentication → Emails → Templates** (para que las invitaciones y recuperos funcionen con el flujo de servidor). En **Invite user** reemplazá el link por:
-   ```html
-   <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=invite">Aceptar invitación</a>
-   ```
-   En **Reset password**:
-   ```html
-   <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=recovery">Cambiar contraseña</a>
-   ```
-   (El link mágico de login usa `/auth/callback` y no hace falta tocarlo.)
+5. **Mails**: no hace falta editar plantillas (Supabase solo lo permite con SMTP propio). La app funciona con las plantillas por defecto: las invitaciones vuelven a `/auth/bienvenida`. Ojo: sin SMTP propio Supabase manda muy pocos mails (y puede que solo a miembros del equipo), así que lo más práctico es crear a los alumnos **con contraseña** desde la app (Alumnos → + Invitar → "Crear con contraseña"). Si querés que lleguen invitaciones por mail, configurá SMTP en Authentication → Emails → SMTP Settings (por ejemplo con una cuenta de Gmail y una "contraseña de aplicación").
 6. **Authentication → Providers → Email**: dejá activado "Email" y desactivá "Allow new users to sign up" si querés que solo entren invitados.
 7. **Crear tu usuario de entrenador**: Authentication → Users → **Add user** (con contraseña). Después en el SQL Editor:
    ```sql
@@ -104,7 +96,7 @@ psql -d gym_test -f supabase/tests/rls_test.sql   # termina con "RLS OK"
 |---|---|
 | Me manda siempre a /login | Faltan las variables de Supabase o la Site URL/Redirect URLs no coinciden |
 | "Esta sección es solo para entrenadores" | Tu perfil no tiene `role = 'coach'` (paso 1.7) |
-| La invitación abre la app pero no queda logueado | Falta cambiar la plantilla de mail "Invite user" (paso 1.5) |
+| La invitación no llega | Sin SMTP propio Supabase casi no manda mails: creá al alumno con contraseña |
 | La cámara no arranca | Estás en http (no localhost) o el navegador no tiene permiso de cámara |
 | "No se pudieron generar reglas con IA" | Falta `GEMINI_API_KEY`, cuota agotada o cambió el nombre del modelo |
 | No llegan notificaciones en iPhone | La app no está instalada en la pantalla de inicio o no se activaron desde Perfil |
